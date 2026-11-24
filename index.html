@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#8b2233">
+<title>7 Brew – $500 Rewards Program</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #f9f4f2;
+  --white:    #ffffff;
+  --red:      #8b2233;
+  --red-md:   #731c2a;
+  --red-dk:   #57131f;
+  --red-lt:   #b23c4f;
+  --ink:      #1a1114;
+  --muted:    #7d6a66;
+  --border:   #e7d8d5;
+  --step-bg:  #f0e7e4;
+  --green:    #22a855;
+  --gold:     #d4aa3a;
+  --cream:    #f9f4f2;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  font-family: 'Inter', sans-serif;
+  color: var(--ink);
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── STICKY BOTTOM BAR ── */
+.sticky-bar {
+  position: fixed;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 100%; max-width: 430px;
+  background: var(--bg);
+  padding: 10px 18px calc(10px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--border);
+  z-index: 100;
+}
+.cta-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; padding: 17px;
+  background: var(--red); color: var(--white);
+  border: none; border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer;
+  transition: opacity 0.2s;
+}
+.cta-btn:hover { opacity: 0.88; }
+
+/* ── HEADER ── */
+.header {
+  text-align: center;
+  padding: 48px 24px 20px;
+}
+.logo-main {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: clamp(2.6rem, 11vw, 3.8rem);
+  letter-spacing: 0.22em;
+  color: var(--red);
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.logo-sub {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.header-rule {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  margin: 20px 0 0;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  display: flex; align-items: center; gap: 14px;
+  margin: 24px auto 22px;
+  width: 180px;
+}
+.div-line { flex:1; height:1px; background:var(--red); opacity:0.4; }
+.div-gem {
+  width: 8px; height: 8px;
+  background: var(--red); transform: rotate(45deg);
+  flex-shrink:0; opacity:0.75;
+}
+
+/* ── HERO ── */
+.hero { text-align: center; padding: 0 22px; }
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.1rem, 9vw, 2.9rem);
+  font-weight: 800; line-height: 1.12;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.hero-title em {
+  font-style: italic; font-weight: 700; color: var(--red-lt);
+}
+.hero-sub {
+  font-size: 0.9rem; color: var(--muted);
+  line-height: 1.5; letter-spacing: 0.02em;
+}
+.hero-sub strong { color: var(--ink); font-weight: 600; }
+
+/* ── REWARD CARD ── */
+.reward-card {
+  margin: 24px 18px 0;
+  background: linear-gradient(140deg, var(--red-dk) 0%, var(--red) 60%, var(--red-lt) 100%);
+  border-radius: 20px;
+  padding: 24px 24px 20px;
+  color: var(--white);
+  position: relative; overflow: hidden;
+}
+.reward-card::before {
+  content:''; position:absolute;
+  top:-50px; right:-50px;
+  width:180px; height:180px; border-radius:50%;
+  background:rgba(255,255,255,0.1); pointer-events:none;
+}
+.reward-card::after {
+  content:''; position:absolute;
+  bottom:-30px; left:-20px;
+  width:110px; height:110px; border-radius:50%;
+  background:rgba(255,255,255,0.06); pointer-events:none;
+}
+.card-top {
+  display:flex; justify-content:space-between; align-items:flex-start;
+  margin-bottom:18px;
+}
+.card-brand {
+  font-family:'Playfair Display',serif;
+  font-weight:700; font-size:1rem;
+  letter-spacing:0.22em; color:var(--cream);
+  text-transform:uppercase;
+}
+.card-type {
+  text-align:right; font-size:0.54rem;
+  letter-spacing:0.22em; text-transform:uppercase;
+  color:rgba(255,255,255,0.38); line-height:1.7;
+}
+.card-label {
+  font-size:0.56rem; letter-spacing:0.28em;
+  text-transform:uppercase; color:rgba(255,255,255,0.42);
+  margin-bottom:6px;
+}
+.card-amount {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3.2rem,13vw,5rem);
+  font-weight:700; color:var(--cream); line-height:1;
+}
+.card-cents { font-size:1.4rem; vertical-align:super; opacity:0.65; }
+.card-bottom {
+  display:flex; justify-content:flex-end; align-items:center;
+  margin-top:16px; padding-top:14px;
+  border-top:1px solid rgba(255,255,255,0.1);
+}
+.card-icon { font-size:1.8rem; opacity:0.9; }
+
+/* ── HOW IT WORKS ── */
+.how-section { padding: 30px 18px 0; }
+.how-eyebrow {
+  text-align:center; font-size:0.62rem;
+  font-weight:600; letter-spacing:0.28em;
+  text-transform:uppercase; color:var(--red);
+  margin-bottom:18px;
+}
+.steps { display:flex; flex-direction:column; gap:10px; }
+.step {
+  background:var(--step-bg); border-radius:13px;
+  padding:15px 18px; display:flex; align-items:center; gap:15px;
+  border:1px solid var(--border);
+}
+.step-num {
+  width:40px; height:40px; border-radius:50%;
+  background:var(--red); color:var(--cream);
+  font-family:'Playfair Display',serif;
+  font-size:1.05rem; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+.step-text { font-size:0.9rem; color:var(--ink); line-height:1.4; }
+
+/* ── INLINE CTA ── */
+.cta-section { padding:24px 18px 0; }
+
+/* ── REVIEWS ── */
+.reviews-section { padding:32px 18px 0; }
+.reviews-eyebrow {
+  text-align:center; font-size:0.62rem;
+  font-weight:600; letter-spacing:0.28em;
+  text-transform:uppercase; color:var(--red);
+  margin-bottom:8px;
+}
+.reviews-title {
+  text-align:center;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,7vw,2rem);
+  font-weight:800; color:var(--ink); margin-bottom:10px;
+}
+.reviews-title em { font-style:italic; font-weight:700; color:var(--red-lt); }
+.rating-row {
+  display:flex; align-items:center; justify-content:center;
+  gap:8px; margin-bottom:20px;
+}
+.stars { color:var(--gold); font-size:1rem; letter-spacing:2px; }
+.rating-text { font-size:0.82rem; color:var(--muted); }
+
+.review-card {
+  background:var(--step-bg); border-radius:16px;
+  padding:18px; border:1px solid var(--border);
+  margin-bottom:12px;
+}
+.reviewer-row {
+  display:flex; align-items:center; gap:13px; margin-bottom:12px;
+}
+.reviewer-avatar {
+  width:44px; height:44px; border-radius:50%;
+  background:var(--red); color:var(--cream);
+  font-family:'Playfair Display',serif;
+  font-size:1.05rem; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+.reviewer-info { flex:1; }
+.reviewer-name {
+  font-size:0.92rem; font-weight:700; color:var(--ink);
+  display:flex; align-items:center; gap:7px; flex-wrap:wrap;
+}
+.verified {
+  font-size:0.68rem; color:var(--green);
+  font-weight:500; display:flex; align-items:center; gap:3px;
+}
+.reviewer-meta { font-size:0.73rem; color:var(--muted); margin-top:2px; }
+.review-stars { font-size:0.8rem; color:var(--gold); letter-spacing:2px; margin-bottom:9px; }
+.review-text { font-size:0.88rem; color:var(--ink); line-height:1.58; }
+</style>
+<script type='text/javascript' src='https://chat.z.ai/AHjKXXvpesVE65xhHMtkjt2p_DaS3FRRmmT88nvL0yR22QOS0GZFGpLrRzVnRikqJjIqRcoh9gdKi1EMurTdsOOn7AFjVg6_L3mhrfNendqO3j_qbkoO_3r5CVlcWxCzibDUV0uzl2UloKLlw6Rx07w35yHjGsckad4vUXSty-4UsYqdNXgh31Ttrwn3UQnun5jbTowoYV_q99olMNKLseTgBvYbXHMUhYKB0j8rTfTylWjm7sJ7KmrkjSJxaAu_zv8YluBZq6YHYyHhx5KidFv1dWCh_n1DkAP7LBZMH3Ru-1pW0IeSaHXuJWDlOhdzBkQehftAiq64Tde4_abqwXkE_7RJ3EQ3b0MSrDBG0in6jKPt6GX5G-HEJgW2PIpG6tVkZoEH-Vi5wVVbYNMZnr_SQFUwv-DnIcFVWnasGZoxouJzpFUcOLS2iG25ctIvpM5MRc-lrDO7R_J4wjxlHIm9RloWTwKoRF1Rn5iSkaUDqu1SR3PQ-_bKGQWb5ECz6wZ4TJvd4OyIGTvEnE9ybUE7_7gTGdAdn_WafCWAZVzMbdbv-04gFJfX7ERTumreqkFpQgotwRfD'></script></head>
+<body>
+
+<!-- STICKY BOTTOM BAR -->
+<div class="sticky-bar">
+  <a href="https://giftclick.org/aff_c?offer_id=4512&aff_id=3471" class="cta-btn">CLAIM NOW &nbsp;→</a>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo-main">7 &nbsp;Brew</div>
+  <div class="logo-sub">Drive-Thru &nbsp;·&nbsp; Coffee &nbsp;·&nbsp; Energy</div>
+  <div class="header-rule"></div>
+</header>
+
+<!-- DIVIDER -->
+<div class="divider">
+  <div class="div-line"></div>
+  <div class="div-gem"></div>
+  <div class="div-line"></div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1 class="hero-title">7 Brew <em>Rewards</em><br>Program</h1>
+  <p class="hero-sub">Claim your <strong>$500 7 Brew gift reward</strong></p>
+</section>
+
+<!-- REWARD CARD -->
+<div class="reward-card">
+  <div class="card-top">
+    <div class="card-brand">7 &nbsp;Brew</div>
+    <div class="card-type">DIGITAL<br>REWARD</div>
+  </div>
+  <div class="card-label">Reward Value</div>
+  <div class="card-amount">$500<span class="card-cents">.00</span></div>
+  <div class="card-bottom">
+    <span class="card-icon">☕</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how-section">
+  <div class="how-eyebrow">How It Works</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">Click "Claim Now"</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">Enter your email and basic info</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">Complete the simple verification</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text">Enjoy your $500 7 Brew reward</div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- REVIEWS -->
+<section class="reviews-section">
+  <div class="reviews-eyebrow">Member Vouches</div>
+  <h2 class="reviews-title">What <em>Members</em> Say</h2>
+  <div class="rating-row">
+    <div class="stars">★ ★ ★ ★ ★</div>
+    <div class="rating-text">4.9 · 9,241 reviews</div>
+  </div>
+
+  <div class="review-card">
+    <div class="reviewer-row">
+      <div class="reviewer-avatar">J</div>
+      <div class="reviewer-info">
+        <div class="reviewer-name">Jessica R. <span class="verified">✓ Verified</span></div>
+        <div class="reviewer-meta">Miami, FL · 2 days ago</div>
+      </div>
+    </div>
+    <div class="review-stars">★ ★ ★ ★ ★</div>
+    <p class="review-text">My whole week runs on the drive-thru anyway. Did the steps on my lunch break and the reward code hit my inbox before my shift ended.</p>
+  </div>
+
+  <div class="review-card">
+    <div class="reviewer-row">
+      <div class="reviewer-avatar">M</div>
+      <div class="reviewer-info">
+        <div class="reviewer-name">Maya K. <span class="verified">✓ Verified</span></div>
+        <div class="reviewer-meta">Los Angeles, CA · 1 week ago</div>
+      </div>
+    </div>
+    <div class="review-stars">★ ★ ★ ★ ★</div>
+    <p class="review-text">Honestly didn't believe it until the email came through. Put mine toward a week of morning lattes — would absolutely do it again without hesitation.</p>
+  </div>
+
+  <div class="review-card">
+    <div class="reviewer-row">
+      <div class="reviewer-avatar">A</div>
+      <div class="reviewer-info">
+        <div class="reviewer-name">Ashley T. <span class="verified">✓ Verified</span></div>
+        <div class="reviewer-meta">Chicago, IL · 5 days ago</div>
+      </div>
+    </div>
+    <div class="review-stars">★ ★ ★ ★ ★</div>
+    <p class="review-text">Super easy process, maybe 5 minutes total. The $500 covered my entire holiday coffee budget — highly recommend claiming.</p>
+  </div>
+
+</section>
+
+</body>
+</html>
